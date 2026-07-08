@@ -1,9 +1,20 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @source '../**/*.{js,ts,jsx,tsx}';
-@import 'tw-animate-css';
+@import "tw-animate-css";
 
 @theme {
-  --color-brand-orange: #e65c00;
-  --color-brand-slate: #2c3e50;
-  --color-brand-cream: #fdfbf7;
+    --color-brand-orange: #e65c00;
+    --color-brand-slate: #2c3e50;
+    --color-brand-cream: #fdfbf7;
+    --color-brand-green: #2c7a5c;
+    --color-brand-purple: #7c3aed;
+    --color-shell-border: #1a0f0a;
+    --color-shell-panel: #0d0704;
+    --color-shell-overlay: #160c06;
+    --color-social-facebook: #1877f2;
+    --color-social-instagram: #e1306c;
+    --color-social-youtube: #ff0000;
+    --color-mac-red: #ff5f57;
+    --color-mac-yellow: #febc2e;
+    --color-mac-green: #28c840;
 }

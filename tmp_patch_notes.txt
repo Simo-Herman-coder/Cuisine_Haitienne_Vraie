@@ -1,0 +1,8 @@
+Preparing to update multiple gradient strings in App.tsx
+Targets:
+- Cooking Mode CTA
+- Floating FAB
+- Trivia header
+- Message send button
+- 2C1810 -> var(--color-foreground) gradients
+- #4E5D6C backgrounds

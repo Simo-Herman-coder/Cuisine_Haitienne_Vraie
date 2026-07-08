@@ -78,13 +78,7 @@ type Layout = "mobile" | "desktop"
 function Logo({ compact = false }: { compact?: boolean }) {
     return (
         <div className="flex items-center gap-2.5">
-            <div
-                className="relative flex items-center justify-center shadow-md w-9 h-9 rounded-xl shrink-0"
-                style={{
-                    background:
-                        "linear-gradient(145deg,var(--color-brand-orange),#E07848)",
-                }}
-            >
+            <div className="relative flex items-center justify-center shadow-md w-9 h-9 rounded-xl shrink-0 bg-brand-gradient">
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                     <path
                         d="M11 2C11 2 7 6.5 7 11C7 13.8 8.8 16 11 16C13.2 16 15 13.8 15 11C15 6.5 11 2 11 2Z"
@@ -109,16 +103,10 @@ function Logo({ compact = false }: { compact?: boolean }) {
             </div>
             {!compact && (
                 <div className="flex flex-col leading-none">
-                    <span
-                        className="text-sm font-bold tracking-tight text-foreground"
-                        style={{ fontFamily: DF }}
-                    >
+                    <span className="text-sm font-bold tracking-tight text-foreground font-display">
                         Cuisine Haïtienne
                     </span>
-                    <span
-                        className="font-bold tracking-[0.18em] uppercase text-primary"
-                        style={{ fontSize: "0.52rem" }}
-                    >
+                    <span className="font-bold tracking-[0.18em] uppercase text-primary text-[0.52rem]">
                         Vraie
                     </span>
                 </div>
@@ -208,10 +196,7 @@ function RecipeCard({
                 </div>
             </div>
             <div className="p-3">
-                <h3
-                    className="text-sm font-semibold leading-snug text-foreground line-clamp-2"
-                    style={{ fontFamily: DF }}
-                >
+                <h3 className="text-sm font-semibold leading-snug text-foreground line-clamp-2 font-display">
                     {title}
                 </h3>
                 <div className="flex items-center gap-1 mt-1.5 text-muted-foreground">
@@ -279,21 +264,12 @@ function CookingModeOverlay({
     const isLast = current === steps.length - 1
 
     return (
-        <div
-            className="absolute inset-0 z-50 flex flex-col"
-            style={{ background: "#160C06" }}
-        >
+        <div className="absolute inset-0 z-50 flex flex-col bg-foreground">
             {/* Header */}
-            <div
-                className="flex items-center justify-between px-5 py-4 shrink-0"
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
-            >
+            <div className="flex items-center justify-between px-5 py-4 border-b shrink-0 border-white/10">
                 <div className="flex items-center gap-2">
                     <ChefHat size={18} className="text-accent" />
-                    <span
-                        className="font-semibold text-white"
-                        style={{ fontFamily: DF, fontSize: "0.95rem" }}
-                    >
+                    <span className="font-semibold text-white font-display text-[0.95rem]">
                         Lecture Cuisine
                     </span>
                 </div>
@@ -303,8 +279,7 @@ function CookingModeOverlay({
                     </span>
                     <button
                         onClick={onClose}
-                        className="flex items-center justify-center transition-colors rounded-full w-7 h-7 text-white/50 hover:text-white"
-                        style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+                        className="flex items-center justify-center transition-colors border rounded-full w-7 h-7 text-white/50 hover:text-white border-white/20"
                     >
                         <X size={13} />
                     </button>
@@ -312,10 +287,7 @@ function CookingModeOverlay({
             </div>
 
             {/* Progress bar */}
-            <div
-                className="h-0.5 shrink-0"
-                style={{ background: "rgba(255,255,255,0.06)" }}
-            >
+            <div className="h-0.5 shrink-0 bg-white/10">
                 <div
                     className="h-full transition-all duration-500 ease-out bg-primary"
                     style={{
@@ -326,14 +298,8 @@ function CookingModeOverlay({
 
             {/* Step content */}
             <div className="flex flex-col items-center justify-center flex-1 gap-6 px-6 py-6">
-                <div
-                    className="flex items-center justify-center w-16 h-16 rounded-full shrink-0"
-                    style={{ border: "2px solid #D4940A" }}
-                >
-                    <span
-                        className="text-2xl font-bold text-accent"
-                        style={{ fontFamily: DF }}
-                    >
+                <div className="flex items-center justify-center w-16 h-16 border-2 rounded-full shrink-0 border-accent">
+                    <span className="text-2xl font-bold text-accent font-display">
                         {current + 1}
                     </span>
                 </div>
@@ -343,13 +309,7 @@ function CookingModeOverlay({
                 >
                     {steps[current]}
                 </p>
-                <div
-                    className="w-full px-4 py-3 rounded-xl"
-                    style={{
-                        background: "rgba(255,255,255,0.04)",
-                        border: "1px solid rgba(255,255,255,0.07)",
-                    }}
-                >
+                <div className="w-full px-4 py-3 rounded-xl bg-overlay-panel">
                     <p className="text-xs text-center text-white/35">
                         💡 Lisez l'étape complète avant de commencer
                     </p>
@@ -408,7 +368,7 @@ function CookingModeOverlay({
                         onClick={onClose}
                         className="w-full py-3.5 rounded-2xl text-sm font-bold flex items-center justify-center gap-2 transition-all"
                         style={{
-                            color: "#D4940A",
+                            color: "var(--accent)",
                             border: "1.5px solid rgba(212,148,10,0.35)",
                         }}
                     >
@@ -540,8 +500,7 @@ function HomeScreen({
                 <img
                     src={u(I.griotHero, 800, 440)}
                     alt="Cuisine haïtienne"
-                    className="object-cover w-full bg-muted"
-                    style={{ height: d ? 240 : 200 }}
+                    className={`object-cover w-full bg-muted ${d ? "h-[240px]" : "h-[200px]"}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent" />
                 <div className="absolute inset-0 flex flex-col justify-center px-6 py-4">
@@ -549,11 +508,7 @@ function HomeScreen({
                         Bienvenue
                     </span>
                     <h1
-                        className="mb-2 font-bold leading-tight text-white"
-                        style={{
-                            fontFamily: DF,
-                            fontSize: d ? "1.8rem" : "1.4rem",
-                        }}
+                        className={`mb-2 font-bold leading-tight text-white font-display ${d ? "text-[1.8rem]" : "text-[1.4rem]"}`}
                     >
                         Cuisine Haïtienne
                         <br />
@@ -637,10 +592,7 @@ function HomeScreen({
                                             className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 bg-muted"
                                         />
                                     </div>
-                                    <span
-                                        className="text-xs font-semibold leading-tight text-center text-foreground/70"
-                                        style={{ maxWidth: 64 }}
-                                    >
+                                    <span className="text-xs font-semibold leading-tight text-center text-foreground/70 max-w-[64px]">
                                         {cat.label}
                                     </span>
                                 </button>
@@ -903,8 +855,7 @@ function SearchScreen({
                                 <img
                                     src={u(r.img, 160, 160)}
                                     alt={r.title}
-                                    className="object-cover w-18 h-18 rounded-xl bg-muted shrink-0"
-                                    style={{ width: 72, height: 72 }}
+                                    className="object-cover w-[72px] h-[72px] rounded-xl bg-muted shrink-0"
                                 />
                                 <div className="flex-1 min-w-0">
                                     <p
@@ -1090,7 +1041,7 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                     className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-white font-bold shadow-lg hover:shadow-xl transition-all active:scale-[0.99]"
                     style={{
                         background:
-                            "linear-gradient(135deg,var(--color-brand-orange),#E07848)",
+                            "linear-gradient(135deg,var(--color-brand-orange),var(--accent))",
                     }}
                 >
                     <ChefHat size={20} />
@@ -1745,7 +1696,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 className="overflow-hidden border shadow-sm rounded-2xl border-primary/20"
                                 style={{
                                     background:
-                                        "linear-gradient(135deg,#FFF5F0,#FBF6EE)",
+                                        "linear-gradient(135deg,var(--color-brand-cream),var(--color-muted))",
                                 }}
                             >
                                 <div className="p-4">
@@ -1768,9 +1719,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                             votre@email.com
                                         </span>
                                     </div>
-                                    <button
-                                        className="w-full py-2 text-xs font-bold text-white rounded-xl bg-brand-orange"
-                                    >
+                                    <button className="w-full py-2 text-xs font-bold text-white rounded-xl bg-brand-orange">
                                         S'abonner →
                                     </button>
                                 </div>
@@ -1819,7 +1768,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
             title: "L'epis parfait : mes proportions secrètes révélées",
             author: "Rémy Dupont",
             initials: "RD",
-            color: "#4E5D6C",
+            color: "var(--color-secondary)",
             time: "il y a 5h",
             tags: ["Epis", "Base"],
             replies: 8,
@@ -1835,7 +1784,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
             title: "Où trouver du djon djon séché en France ?",
             author: "Sophie K.",
             initials: "SK",
-            color: "#D4940A",
+            color: "var(--accent)",
             time: "il y a 1j",
             tags: ["Djon Djon", "Ingrédients"],
             replies: 22,
@@ -1851,7 +1800,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
             title: "Ma version du bouillon national avec légumes racines",
             author: "Chantal M.",
             initials: "CM",
-            color: "#2C7A5C",
+            color: "var(--color-secondary)",
             time: "il y a 2j",
             tags: ["Bouillon", "Recette"],
             replies: 31,
@@ -1867,7 +1816,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
             title: "La vidéo sur le pikliz de Chantal est exceptionnelle",
             author: "Jean-Pierre R.",
             initials: "JP",
-            color: "#7C3AED",
+            color: "var(--color-accent)",
             time: "il y a 3j",
             tags: ["Pikliz", "Vidéo"],
             replies: 5,
@@ -2095,7 +2044,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
                     className="absolute z-20 flex items-center justify-center text-white transition-all rounded-full shadow-xl bottom-4 right-4 w-14 h-14 hover:shadow-2xl active:scale-95"
                     style={{
                         background:
-                            "linear-gradient(145deg,var(--color-brand-orange),#E07848)",
+                            "linear-gradient(145deg,var(--color-brand-orange),var(--accent))",
                     }}
                 >
                     <Plus size={24} />
@@ -2131,7 +2080,8 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
             <div
                 className="sticky top-0 z-10 px-4 pt-4 pb-4 text-white"
                 style={{
-                    background: "linear-gradient(135deg,#2C1810,#4E5D6C)",
+                    background:
+                        "linear-gradient(135deg,var(--color-foreground),var(--color-secondary))",
                 }}
             >
                 <div className="flex items-start justify-between">
@@ -2171,7 +2121,10 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                     <div className="h-2 overflow-hidden rounded-full bg-white/10">
                         <div
                             className="h-full rounded-full"
-                            style={{ width: "78%", background: "var(--color-brand-orange)" }}
+                            style={{
+                                width: "78%",
+                                background: "var(--color-brand-orange)",
+                            }}
                         />
                     </div>
                 </div>
@@ -2259,7 +2212,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                             className="flex items-center justify-between px-4 py-3"
                             style={{
                                 background:
-                                    "linear-gradient(135deg,var(--color-brand-orange),#E07848)",
+                                    "linear-gradient(135deg,var(--color-brand-orange),var(--accent))",
                             }}
                         >
                             <div className="flex items-center gap-2">
@@ -2303,9 +2256,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                     </button>
                                 ))}
                             </div>
-                            <button
-                                className="w-full py-3 text-sm font-bold text-white rounded-xl bg-brand-orange"
-                            >
+                            <button className="w-full py-3 text-sm font-bold text-white rounded-xl bg-brand-orange">
                                 Valider la réponse →
                             </button>
                         </div>
@@ -2316,7 +2267,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 className="flex items-center justify-between px-4 py-3"
                                 style={{
                                     background:
-                                        "linear-gradient(135deg,#4E5D6C,#6B7D8E)",
+                                        "linear-gradient(135deg,var(--color-secondary),var(--color-secondary))",
                                 }}
                             >
                                 <div className="flex items-center gap-2">
@@ -2377,13 +2328,16 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         className="h-full rounded-full"
                                         style={{
                                             width: "50%",
-                                            background: "var(--color-brand-orange)",
+                                            background:
+                                                "var(--color-brand-orange)",
                                         }}
                                     />
                                 </div>
                                 <button
                                     className="w-full py-2.5 rounded-xl text-white text-xs font-bold"
-                                    style={{ background: "#4E5D6C" }}
+                                    style={{
+                                        background: "var(--color-secondary)",
+                                    }}
                                 >
                                     Continuer le défi →
                                 </button>
@@ -2557,8 +2511,9 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
         <div className="flex flex-col h-full overflow-hidden bg-background">
             <div
                 className="px-4 pt-4 pb-4 text-white"
-                    style={{
-                    background: "linear-gradient(135deg,#2C1810,var(--color-brand-orange))",
+                style={{
+                    background:
+                        "linear-gradient(135deg,var(--color-foreground),var(--color-brand-orange))",
                 }}
             >
                 <div className="flex items-start gap-3">
@@ -2926,7 +2881,7 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                             className="w-full py-3.5 rounded-2xl text-white text-sm font-bold flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all"
                             style={{
                                 background:
-                                    "linear-gradient(135deg,var(--color-brand-orange),#E07848)",
+                                    "linear-gradient(135deg,var(--color-brand-orange),var(--accent))",
                             }}
                         >
                             <Send size={15} /> Envoyer le message
@@ -3010,21 +2965,21 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         name: "Facebook",
                                         handle: "@CuisineHaïtienneVraie",
                                         subs: "12,4k",
-                                        bg: "#1877F2",
+                                        bg: "var(--color-social-facebook)",
                                     },
                                     {
                                         mark: "◎",
                                         name: "Instagram",
                                         handle: "@cuisine_ht_vraie",
                                         subs: "8,9k",
-                                        bg: "#E1306C",
+                                        bg: "var(--color-social-instagram)",
                                     },
                                     {
                                         mark: "▶",
                                         name: "YouTube",
                                         handle: "CuisineHaïtienneVraie",
                                         subs: "3,2k",
-                                        bg: "#FF0000",
+                                        bg: "var(--color-social-youtube)",
                                     },
                                 ].map(({ mark, name, handle, subs, bg }) => (
                                     <a
@@ -3092,7 +3047,7 @@ function ChatbotPanel({ onClose }: { onClose: () => void }) {
     return (
         <div
             className="absolute z-50 flex flex-col overflow-hidden bg-white shadow-2xl"
-                style={{
+            style={{
                 bottom: 0,
                 left: 0,
                 right: 0,
@@ -3103,7 +3058,8 @@ function ChatbotPanel({ onClose }: { onClose: () => void }) {
             <div
                 className="flex items-center justify-between px-4 py-3 border-b shrink-0 border-border"
                 style={{
-                    background: "linear-gradient(135deg,#2C1810,var(--color-brand-orange))",
+                    background:
+                        "linear-gradient(135deg,var(--color-foreground),var(--color-brand-orange))",
                 }}
             >
                 <div className="flex items-center gap-2">
@@ -3158,9 +3114,7 @@ function ChatbotPanel({ onClose }: { onClose: () => void }) {
                         Posez votre question…
                     </span>
                 </div>
-                <button
-                    className="flex items-center justify-center shadow-sm w-9 h-9 rounded-xl bg-brand-orange"
-                >
+                <button className="flex items-center justify-center shadow-sm w-9 h-9 rounded-xl bg-brand-orange">
                     <Send size={14} className="text-white" />
                 </button>
             </div>
@@ -3234,25 +3188,10 @@ function MobileShell({
             <p className="mb-3 font-mono text-xs tracking-wider uppercase text-muted-foreground">
                 ← Mobile · 390px
             </p>
-            <div
-                className="relative overflow-hidden"
-                style={{
-                    width: 390,
-                    borderRadius: 44,
-                    border: "8px solid #1A0F0A",
-                    boxShadow:
-                        "0 40px 80px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.08)",
-                }}
-            >
+            <div className="relative overflow-hidden w-[390px] rounded-[44px] border-[8px] border-foreground shadow-shell">
                 {/* Notch */}
-                <div
-                    className="relative flex items-center justify-center shrink-0"
-                    style={{ height: 32, background: "#1A0F0A" }}
-                >
-                    <div
-                        className="w-24 h-5 rounded-full"
-                        style={{ background: "#0D0704" }}
-                    />
+                <div className="relative flex items-center justify-center shrink-0 h-[32px] bg-shell-panel">
+                    <div className="w-24 h-5 rounded-full bg-shell-panel" />
                     <div className="absolute right-5 flex items-center gap-1.5">
                         <div className="text-gray-600" style={{ fontSize: 7 }}>
                             ▌
@@ -3261,10 +3200,7 @@ function MobileShell({
                     </div>
                 </div>
                 {/* Screen */}
-                <div
-                    className="relative overflow-hidden"
-                    style={{ height: 600 }}
-                >
+                <div className="relative overflow-hidden h-[600px]">
                     <ScreenContent
                         active={active}
                         navigate={navigate}
@@ -3299,7 +3235,10 @@ function MobileShell({
                 {/* Bottom thumb nav */}
                 <div
                     className="flex bg-white shrink-0"
-                    style={{ height: 60, borderTop: "1px solid #E5D2BA" }}
+                    style={{
+                        height: 60,
+                        borderTop: "1px solid var(--color-border)",
+                    }}
                 >
                     {NAV_ITEMS.map(({ id, label, icon: Icon }) => {
                         const isActive =
@@ -3329,7 +3268,9 @@ function MobileShell({
                                     className="font-semibold leading-none"
                                     style={{
                                         fontSize: 7,
-                                        color: isActive ? "var(--color-brand-orange)" : "#7A6255",
+                                        color: isActive
+                                            ? "var(--color-brand-orange)"
+                                            : "var(--color-muted-foreground)",
                                     }}
                                 >
                                     {label}
@@ -3363,19 +3304,23 @@ function DesktopShell({
                 style={{
                     width: 760,
                     borderRadius: 12,
-                    border: "1.5px solid #E5D2BA",
+                    border: "1.5px solid var(--color-border)",
                 }}
             >
                 {/* Browser chrome */}
                 <div
                     className="flex items-center gap-2 px-3 py-2 shrink-0"
                     style={{
-                        background: "#F0E8DD",
-                        borderBottom: "1px solid #E5D2BA",
+                        background: "var(--color-muted)",
+                        borderBottom: "1px solid var(--color-border)",
                     }}
                 >
                     <div className="flex gap-1.5">
-                        {["#FF5F57", "#FEBC2E", "#28C840"].map((c, i) => (
+                        {[
+                            "var(--color-mac-red)",
+                            "var(--color-mac-yellow)",
+                            "var(--color-mac-green)",
+                        ].map((c, i) => (
                             <div
                                 key={i}
                                 className="w-3 h-3 rounded-full"
@@ -3391,10 +3336,7 @@ function DesktopShell({
                     </div>
                 </div>
                 {/* Top nav header */}
-                <div
-                    className="flex items-center gap-3 px-5 bg-white border-b shrink-0 border-border"
-                    style={{ height: 56 }}
-                >
+                <div className="flex items-center gap-3 px-5 bg-white border-b shrink-0 border-border h-[56px]">
                     <Logo />
                     <div className="w-px h-6 mx-1 bg-border" />
                     <nav className="flex items-center gap-0.5 flex-1 overflow-x-auto scrollbar-hide">
@@ -3436,10 +3378,7 @@ function DesktopShell({
                     </div>
                 </div>
                 {/* Content */}
-                <div
-                    className="relative overflow-hidden"
-                    style={{ height: 595 }}
-                >
+                <div className="relative overflow-hidden h-[595px]">
                     <div className="h-full overflow-y-auto scrollbar-hide bg-background">
                         <ScreenContent
                             active={active}
@@ -3486,13 +3425,7 @@ export default function App() {
         NAV_ITEMS.find(n => n.id === active)?.label ?? "Détail Recette"
 
     return (
-        <div
-            className="min-h-screen px-6 py-10"
-            style={{
-                background:
-                    "linear-gradient(160deg,#F5EDE0 0%,#EEE0CF 50%,#E8D5BC 100%)",
-            }}
-        >
+        <div className="min-h-screen px-6 py-10 bg-app-gradient">
             <div className="mb-8 text-center">
                 <div className="flex justify-center mb-3">
                     <Logo />
