@@ -1,4 +1,3 @@
-import React from "react"
 import AppShell from "../components/common/AppShell"
 import recipes from "../data/mockData.js"
 

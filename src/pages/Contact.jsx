@@ -1,4 +1,3 @@
-import React from "react"
 import AppShell from "../components/common/AppShell"
 import { Mail, Send, MapPin, Phone, ExternalLink } from "lucide-react"
 

@@ -1,8 +1,8 @@
-@import "tailwindcss";
-@source '../**/*.{js,ts,jsx,tsx}';
-@import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
     --color-brand-orange: #e65c00;
     --color-brand-slate: #2c3e50;
     --color-brand-cream: #fdfbf7;

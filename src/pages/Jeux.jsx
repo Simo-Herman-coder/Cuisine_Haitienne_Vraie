@@ -1,4 +1,3 @@
-import React from "react"
 import AppShell from "../components/common/AppShell"
 
 export default function JeuxPage({ onNavigate }) {
