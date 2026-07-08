@@ -3,6 +3,7 @@ import {
     BookOpen,
     Gamepad2,
     Home,
+    Mail,
     Newspaper,
     Play,
     User,
@@ -16,6 +17,7 @@ const tabs = [
     { id: "blog", label: "Blog", icon: Newspaper },
     { id: "jeux", label: "Jeux", icon: Gamepad2 },
     { id: "profil", label: "Profil", icon: User },
+    { id: "contact", label: "Contact", icon: Mail },
 ]
 
 export default function AppShell({ children, activeTab = "home", onNavigate }) {

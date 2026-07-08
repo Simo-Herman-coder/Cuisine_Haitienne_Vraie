@@ -79,7 +79,7 @@ function Logo({ compact = false }: { compact?: boolean }) {
     return (
         <div className="flex items-center gap-2.5">
             <div
-                className="relative w-9 h-9 rounded-xl flex items-center justify-center shadow-md shrink-0"
+                className="relative flex items-center justify-center shadow-md w-9 h-9 rounded-xl shrink-0"
                 style={{
                     background:
                         "linear-gradient(145deg,var(--color-brand-orange),#E07848)",
@@ -110,7 +110,7 @@ function Logo({ compact = false }: { compact?: boolean }) {
             {!compact && (
                 <div className="flex flex-col leading-none">
                     <span
-                        className="font-bold text-sm tracking-tight text-foreground"
+                        className="text-sm font-bold tracking-tight text-foreground"
                         style={{ fontFamily: DF }}
                     >
                         Cuisine Haïtienne
@@ -178,13 +178,13 @@ function RecipeCard({
     return (
         <div
             onClick={onClick}
-            className="rounded-2xl overflow-hidden shadow-md bg-card cursor-pointer group hover:shadow-xl transition-all duration-300"
+            className="overflow-hidden transition-all duration-300 shadow-md cursor-pointer rounded-2xl bg-card group hover:shadow-xl"
         >
             <div className="relative overflow-hidden">
                 <img
                     src={img}
                     alt={title}
-                    className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500 bg-muted"
+                    className="object-cover w-full h-40 transition-transform duration-500 group-hover:scale-105 bg-muted"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <button
@@ -209,7 +209,7 @@ function RecipeCard({
             </div>
             <div className="p-3">
                 <h3
-                    className="font-semibold text-sm leading-snug text-foreground line-clamp-2"
+                    className="text-sm font-semibold leading-snug text-foreground line-clamp-2"
                     style={{ fontFamily: DF }}
                 >
                     {title}
@@ -238,15 +238,15 @@ function VideoCard({
 }) {
     const d = layout === "desktop"
     return (
-        <div className="rounded-2xl overflow-hidden shadow-sm bg-card cursor-pointer group hover:shadow-lg transition-all duration-300">
+        <div className="overflow-hidden transition-all duration-300 shadow-sm cursor-pointer rounded-2xl bg-card group hover:shadow-lg">
             <div className="relative overflow-hidden">
                 <img
                     src={img}
                     alt={title}
                     className={`w-full object-cover group-hover:scale-105 transition-transform duration-500 bg-muted ${d ? "h-32" : "h-28"}`}
                 />
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                    <div className="w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+                <div className="absolute inset-0 flex items-center justify-center transition-colors bg-black/30 group-hover:bg-black/40">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full shadow-lg bg-white/90">
                         <Play size={16} className="text-primary ml-0.5" />
                     </div>
                 </div>
@@ -298,12 +298,12 @@ function CookingModeOverlay({
                     </span>
                 </div>
                 <div className="flex items-center gap-3">
-                    <span className="text-xs text-white/40 font-mono tabular-nums">
+                    <span className="font-mono text-xs text-white/40 tabular-nums">
                         {current + 1} / {steps.length}
                     </span>
                     <button
                         onClick={onClose}
-                        className="w-7 h-7 rounded-full flex items-center justify-center text-white/50 hover:text-white transition-colors"
+                        className="flex items-center justify-center transition-colors rounded-full w-7 h-7 text-white/50 hover:text-white"
                         style={{ border: "1px solid rgba(255,255,255,0.15)" }}
                     >
                         <X size={13} />
@@ -317,7 +317,7 @@ function CookingModeOverlay({
                 style={{ background: "rgba(255,255,255,0.06)" }}
             >
                 <div
-                    className="h-full bg-primary transition-all duration-500 ease-out"
+                    className="h-full transition-all duration-500 ease-out bg-primary"
                     style={{
                         width: `${((current + 1) / steps.length) * 100}%`,
                     }}
@@ -325,46 +325,46 @@ function CookingModeOverlay({
             </div>
 
             {/* Step content */}
-            <div className="flex-1 flex flex-col items-center justify-center px-6 py-6 gap-6">
+            <div className="flex flex-col items-center justify-center flex-1 gap-6 px-6 py-6">
                 <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center shrink-0"
+                    className="flex items-center justify-center w-16 h-16 rounded-full shrink-0"
                     style={{ border: "2px solid #D4940A" }}
                 >
                     <span
-                        className="text-accent font-bold text-2xl"
+                        className="text-2xl font-bold text-accent"
                         style={{ fontFamily: DF }}
                     >
                         {current + 1}
                     </span>
                 </div>
                 <p
-                    className="text-white text-xl text-center leading-relaxed"
+                    className="text-xl leading-relaxed text-center text-white"
                     style={{ fontFamily: DF }}
                 >
                     {steps[current]}
                 </p>
                 <div
-                    className="w-full rounded-xl px-4 py-3"
+                    className="w-full px-4 py-3 rounded-xl"
                     style={{
                         background: "rgba(255,255,255,0.04)",
                         border: "1px solid rgba(255,255,255,0.07)",
                     }}
                 >
-                    <p className="text-white/35 text-xs text-center">
+                    <p className="text-xs text-center text-white/35">
                         💡 Lisez l'étape complète avant de commencer
                     </p>
                 </div>
             </div>
 
             {/* Navigation */}
-            <div className="px-6 pb-8 flex flex-col gap-3 shrink-0">
+            <div className="flex flex-col gap-3 px-6 pb-8 shrink-0">
                 {/* Step dots */}
                 <div className="flex justify-center gap-1.5 mb-1">
                     {steps.map((_, i) => (
                         <button
                             key={i}
                             onClick={() => setCurrent(i)}
-                            className="rounded-full transition-all duration-300"
+                            className="transition-all duration-300 rounded-full"
                             style={{
                                 width: i === current ? 16 : 8,
                                 height: 8,
@@ -518,16 +518,16 @@ function HomeScreen({
         <div className="flex flex-col h-full overflow-y-auto scrollbar-hide bg-background">
             {/* Mobile header */}
             {!d && (
-                <div className="flex items-center justify-between px-4 py-3 bg-white/90 backdrop-blur-md sticky top-0 z-10 border-b border-border">
+                <div className="sticky top-0 z-10 flex items-center justify-between px-4 py-3 border-b bg-white/90 backdrop-blur-md border-border">
                     <Logo />
                     <div className="flex items-center gap-2">
-                        <button className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
+                        <button className="flex items-center justify-center w-8 h-8 rounded-full bg-muted">
                             <Bell size={15} className="text-foreground/60" />
                         </button>
                         <img
                             src={u(I.chefF, 80, 80)}
                             alt="avatar"
-                            className="w-8 h-8 rounded-full object-cover border-2 border-primary/30 bg-muted"
+                            className="object-cover w-8 h-8 border-2 rounded-full border-primary/30 bg-muted"
                         />
                     </div>
                 </div>
@@ -540,16 +540,16 @@ function HomeScreen({
                 <img
                     src={u(I.griotHero, 800, 440)}
                     alt="Cuisine haïtienne"
-                    className="w-full object-cover bg-muted"
+                    className="object-cover w-full bg-muted"
                     style={{ height: d ? 240 : 200 }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-transparent" />
                 <div className="absolute inset-0 flex flex-col justify-center px-6 py-4">
-                    <span className="text-accent text-xs font-bold uppercase tracking-widest mb-2">
+                    <span className="mb-2 text-xs font-bold tracking-widest uppercase text-accent">
                         Bienvenue
                     </span>
                     <h1
-                        className="text-white font-bold leading-tight mb-2"
+                        className="mb-2 font-bold leading-tight text-white"
                         style={{
                             fontFamily: DF,
                             fontSize: d ? "1.8rem" : "1.4rem",
@@ -559,7 +559,7 @@ function HomeScreen({
                         <br />
                         Vraie
                     </h1>
-                    <p className="text-white/70 text-xs mb-4 max-w-xs">
+                    <p className="max-w-xs mb-4 text-xs text-white/70">
                         Découvrez l'authenticité de notre gastronomie
                     </p>
                     <button
@@ -576,12 +576,12 @@ function HomeScreen({
             >
                 {/* Search — mobile only */}
                 {!d && (
-                    <div className="flex items-center gap-3 bg-white rounded-2xl shadow-sm px-4 py-3 border border-border">
+                    <div className="flex items-center gap-3 px-4 py-3 bg-white border shadow-sm rounded-2xl border-border">
                         <Search size={16} className="text-muted-foreground" />
-                        <span className="text-muted-foreground text-sm flex-1">
+                        <span className="flex-1 text-sm text-muted-foreground">
                             Chercher une recette…
                         </span>
-                        <div className="w-7 h-7 rounded-lg bg-primary flex items-center justify-center">
+                        <div className="flex items-center justify-center rounded-lg w-7 h-7 bg-primary">
                             <Filter size={12} className="text-white" />
                         </div>
                     </div>
@@ -599,7 +599,7 @@ function HomeScreen({
                         >
                             Catégories
                         </h2>
-                        <button className="text-xs font-semibold text-primary flex items-center gap-1">
+                        <button className="flex items-center gap-1 text-xs font-semibold text-primary">
                             Tout voir <ChevronRight size={12} />
                         </button>
                     </div>
@@ -610,35 +610,35 @@ function HomeScreen({
                                     key={cat.label}
                                     className="flex flex-col items-center gap-1.5 group"
                                 >
-                                    <div className="w-full aspect-square rounded-xl overflow-hidden shadow-sm">
+                                    <div className="w-full overflow-hidden shadow-sm aspect-square rounded-xl">
                                         <img
                                             src={u(cat.img, 120, 120)}
                                             alt={cat.label}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 bg-muted"
+                                            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 bg-muted"
                                         />
                                     </div>
-                                    <span className="text-xs font-semibold text-foreground/80 text-center leading-tight">
+                                    <span className="text-xs font-semibold leading-tight text-center text-foreground/80">
                                         {cat.label}
                                     </span>
                                 </button>
                             ))}
                         </div>
                     ) : (
-                        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide -mx-1 px-1">
+                        <div className="flex gap-3 px-1 pb-2 -mx-1 overflow-x-auto scrollbar-hide">
                             {categories.map(cat => (
                                 <button
                                     key={cat.label}
                                     className="flex-shrink-0 flex flex-col items-center gap-1.5 group"
                                 >
-                                    <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-sm">
+                                    <div className="w-16 h-16 overflow-hidden shadow-sm rounded-2xl">
                                         <img
                                             src={u(cat.img, 120, 120)}
                                             alt={cat.label}
-                                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300 bg-muted"
+                                            className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110 bg-muted"
                                         />
                                     </div>
                                     <span
-                                        className="text-xs font-semibold text-foreground/70 text-center leading-tight"
+                                        className="text-xs font-semibold leading-tight text-center text-foreground/70"
                                         style={{ maxWidth: 64 }}
                                     >
                                         {cat.label}
@@ -661,7 +661,7 @@ function HomeScreen({
                         >
                             Recettes en Vedette
                         </h2>
-                        <button className="text-xs font-semibold text-primary flex items-center gap-1">
+                        <button className="flex items-center gap-1 text-xs font-semibold text-primary">
                             Tout voir <ChevronRight size={12} />
                         </button>
                     </div>
@@ -691,7 +691,7 @@ function HomeScreen({
                         >
                             Dernières Vidéos
                         </h2>
-                        <button className="text-xs font-semibold text-primary flex items-center gap-1">
+                        <button className="flex items-center gap-1 text-xs font-semibold text-primary">
                             Tout voir <ChevronRight size={12} />
                         </button>
                     </div>
@@ -805,7 +805,7 @@ function SearchScreen({
                         value={q}
                         onChange={e => setQ(e.target.value)}
                         placeholder="Griot, bouillon, djon djon…"
-                        className="bg-transparent text-sm flex-1 outline-none text-foreground placeholder:text-muted-foreground"
+                        className="flex-1 text-sm bg-transparent outline-none text-foreground placeholder:text-muted-foreground"
                     />
                     {q && (
                         <button onClick={() => setQ("")}>
@@ -814,7 +814,7 @@ function SearchScreen({
                     )}
                 </div>
                 {d && (
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                    <h3 className="text-xs font-bold tracking-wider uppercase text-muted-foreground">
                         Filtres
                     </h3>
                 )}
@@ -824,7 +824,7 @@ function SearchScreen({
                     {filterGroups.map(({ label, options }) => (
                         <div key={label}>
                             <button
-                                className="flex items-center text-sm font-semibold text-foreground w-full py-1"
+                                className="flex items-center w-full py-1 text-sm font-semibold text-foreground"
                                 onClick={() =>
                                     setExpanded(
                                         expanded === label ? null : label
@@ -875,8 +875,8 @@ function SearchScreen({
             </div>
 
             {/* Results */}
-            <div className="flex-1 overflow-y-auto scrollbar-hide p-4">
-                <p className="text-xs text-muted-foreground font-medium mb-3">
+            <div className="flex-1 p-4 overflow-y-auto scrollbar-hide">
+                <p className="mb-3 text-xs font-medium text-muted-foreground">
                     {results.length} recettes trouvées
                 </p>
                 <div
@@ -898,12 +898,12 @@ function SearchScreen({
                             <div
                                 key={r.title}
                                 onClick={() => onNavigate("recipe")}
-                                className="flex gap-3 bg-card rounded-2xl shadow-sm p-3 cursor-pointer hover:shadow-md transition-all border border-border/50 items-center"
+                                className="flex items-center gap-3 p-3 transition-all border shadow-sm cursor-pointer bg-card rounded-2xl hover:shadow-md border-border/50"
                             >
                                 <img
                                     src={u(r.img, 160, 160)}
                                     alt={r.title}
-                                    className="w-18 h-18 rounded-xl object-cover bg-muted shrink-0"
+                                    className="object-cover w-18 h-18 rounded-xl bg-muted shrink-0"
                                     style={{ width: 72, height: 72 }}
                                 />
                                 <div className="flex-1 min-w-0">
@@ -917,7 +917,7 @@ function SearchScreen({
                                         {r.ingr}
                                     </p>
                                     <div className="flex gap-2 mt-1.5 items-center flex-wrap">
-                                        <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
                                             <Clock size={10} />
                                             {r.time}
                                         </span>
@@ -964,7 +964,7 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
     ]
 
     return (
-        <div className="flex flex-col h-full overflow-y-auto scrollbar-hide relative bg-background">
+        <div className="relative flex flex-col h-full overflow-y-auto scrollbar-hide bg-background">
             {/* Hero */}
             <div className="relative shrink-0">
                 <img
@@ -981,7 +981,7 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                 <div className="absolute top-4 right-4">
                     <button
                         onClick={() => setSaved(v => !v)}
-                        className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-md"
+                        className="flex items-center justify-center w-8 h-8 rounded-full shadow-md bg-white/90 backdrop-blur-sm"
                     >
                         <Bookmark
                             size={14}
@@ -1011,12 +1011,12 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                     >
                         Griot de Porc Traditionnel
                     </h1>
-                    <p className="text-muted-foreground text-sm mt-1">
+                    <p className="mt-1 text-sm text-muted-foreground">
                         Plat national d'Haïti · Porc mariné & frit
                     </p>
                     <div className="flex items-center gap-2 mt-2">
                         <Stars n={5} />
-                        <span className="text-xs text-muted-foreground font-medium">
+                        <span className="text-xs font-medium text-muted-foreground">
                             4.8 (214 avis)
                         </span>
                     </div>
@@ -1097,7 +1097,7 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                     <span style={{ fontFamily: DF, fontSize: "1rem" }}>
                         Lecture Cuisine
                     </span>
-                    <span className="text-xs font-normal text-white/70 ml-1 hidden sm:inline">
+                    <span className="hidden ml-1 text-xs font-normal text-white/70 sm:inline">
                         — Mode lecture facilitée
                     </span>
                 </button>
@@ -1149,12 +1149,12 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 {steps.map((step, i) => (
                                     <li
                                         key={i}
-                                        className="flex items-start gap-3 bg-card rounded-xl p-3 shadow-sm border border-border/50"
+                                        className="flex items-start gap-3 p-3 border shadow-sm bg-card rounded-xl border-border/50"
                                     >
-                                        <span className="w-7 h-7 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">
+                                        <span className="flex items-center justify-center text-xs font-bold text-white rounded-full w-7 h-7 bg-primary shrink-0">
                                             {i + 1}
                                         </span>
-                                        <span className="text-sm text-foreground/90 leading-relaxed">
+                                        <span className="text-sm leading-relaxed text-foreground/90">
                                             {step}
                                         </span>
                                     </li>
@@ -1167,22 +1167,22 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                         {/* YouTube block */}
                         <div>
                             <h3
-                                className="font-bold text-foreground mb-3"
+                                className="mb-3 font-bold text-foreground"
                                 style={{ fontFamily: DF }}
                             >
                                 Vidéo de Démonstration
                             </h3>
-                            <div className="relative rounded-2xl overflow-hidden shadow-md bg-muted">
+                            <div className="relative overflow-hidden shadow-md rounded-2xl bg-muted">
                                 <img
                                     src={u(I.cookClass, 600, 340)}
                                     alt="Vidéo démonstration"
-                                    className="w-full h-44 object-cover"
+                                    className="object-cover w-full h-44"
                                 />
-                                <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                                    <div className="w-14 h-14 rounded-full bg-white/95 flex items-center justify-center shadow-xl">
+                                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                                    <div className="flex items-center justify-center rounded-full shadow-xl w-14 h-14 bg-white/95">
                                         <Play
                                             size={22}
-                                            className="text-primary ml-1"
+                                            className="ml-1 text-primary"
                                         />
                                     </div>
                                 </div>
@@ -1194,7 +1194,7 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                         {/* Comments */}
                         <div>
                             <h3
-                                className="font-bold text-foreground mb-3"
+                                className="mb-3 font-bold text-foreground"
                                 style={{ fontFamily: DF }}
                             >
                                 Commentaires (12)
@@ -1213,11 +1213,11 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                             ].map(c => (
                                 <div
                                     key={c.user}
-                                    className="bg-card rounded-xl p-3 mb-2 border border-border/50 shadow-sm"
+                                    className="p-3 mb-2 border shadow-sm bg-card rounded-xl border-border/50"
                                 >
                                     <div className="flex items-center justify-between mb-1.5">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                                            <div className="flex items-center justify-center w-6 h-6 text-xs font-bold rounded-full bg-primary/20 text-primary">
                                                 {c.user[0]}
                                             </div>
                                             <span className="text-xs font-semibold">
@@ -1228,13 +1228,13 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
                                             {c.time}
                                         </span>
                                     </div>
-                                    <p className="text-xs text-foreground/80 leading-relaxed">
+                                    <p className="text-xs leading-relaxed text-foreground/80">
                                         {c.text}
                                     </p>
                                 </div>
                             ))}
                             <div className="flex items-center gap-2 bg-muted rounded-xl px-3 py-2.5 mt-2">
-                                <span className="text-xs text-muted-foreground flex-1">
+                                <span className="flex-1 text-xs text-muted-foreground">
                                     Ajouter un commentaire…
                                 </span>
                                 <Send size={14} className="text-primary" />
@@ -1245,7 +1245,7 @@ function RecipeScreen({ layout = "mobile" }: { layout?: Layout }) {
             </div>
 
             {/* Share FAB */}
-            <div className="absolute bottom-4 right-4 z-20">
+            <div className="absolute z-20 bottom-4 right-4">
                 <button className="flex items-center gap-2 px-4 py-2.5 rounded-full text-white text-xs font-bold shadow-xl hover:shadow-2xl transition-all bg-brand-orange">
                     <Share2 size={14} /> Partager
                 </button>
@@ -1382,7 +1382,7 @@ function VideosScreen({ layout = "mobile" }: { layout?: Layout }) {
             >
                 {!d && (
                     <h1
-                        className="font-bold text-foreground mb-3"
+                        className="mb-3 font-bold text-foreground"
                         style={{ fontFamily: DF, fontSize: "1.1rem" }}
                     >
                         Vidéos de Cuisine
@@ -1409,7 +1409,7 @@ function VideosScreen({ layout = "mobile" }: { layout?: Layout }) {
             <div
                 className={`flex-1 overflow-y-auto scrollbar-hide ${d ? "p-6" : "p-3"}`}
             >
-                <p className="text-xs text-muted-foreground font-medium mb-3">
+                <p className="mb-3 text-xs font-medium text-muted-foreground">
                     {filtered.length} vidéos
                 </p>
                 <div
@@ -1503,7 +1503,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                 <button
                     key={title}
                     title={title}
-                    className="w-7 h-7 border border-border rounded-lg bg-white text-xs font-bold text-foreground/60 hover:bg-muted hover:border-primary/30 transition-all flex items-center justify-center"
+                    className="flex items-center justify-center text-xs font-bold transition-all bg-white border rounded-lg w-7 h-7 border-border text-foreground/60 hover:bg-muted hover:border-primary/30"
                 >
                     {ic}
                 </button>
@@ -1515,7 +1515,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
         const p = posts[activePost]
         return (
             <div className="flex flex-col h-full overflow-y-auto scrollbar-hide bg-background">
-                <div className="bg-white/90 backdrop-blur-md border-b border-border px-4 py-3 sticky top-0 z-10 flex items-center gap-2">
+                <div className="sticky top-0 z-10 flex items-center gap-2 px-4 py-3 border-b bg-white/90 backdrop-blur-md border-border">
                     <button
                         onClick={() => setActivePost(null)}
                         className="flex items-center gap-1 text-sm font-semibold text-primary"
@@ -1534,10 +1534,10 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                     <img
                         src={u(p.img, 700, 380)}
                         alt={p.title}
-                        className="w-full h-44 object-cover rounded-2xl shadow-md bg-muted"
+                        className="object-cover w-full shadow-md h-44 rounded-2xl bg-muted"
                     />
                     <h1
-                        className="font-bold text-foreground leading-snug"
+                        className="font-bold leading-snug text-foreground"
                         style={{
                             fontFamily: DF,
                             fontSize: d ? "1.6rem" : "1.3rem",
@@ -1545,9 +1545,9 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                     >
                         {p.title}
                     </h1>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground border-b border-border pb-3">
+                    <div className="flex items-center gap-3 pb-3 text-xs border-b text-muted-foreground border-border">
                         <div className="flex items-center gap-1.5">
-                            <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+                            <div className="flex items-center justify-center w-5 h-5 text-xs font-bold rounded-full bg-primary/20 text-primary">
                                 {p.author[0]}
                             </div>
                             {p.author}
@@ -1556,19 +1556,19 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                         <span>{p.readTime} de lecture</span>
                     </div>
                     <SocialBar />
-                    <p className="text-sm font-semibold text-foreground leading-relaxed">
+                    <p className="text-sm font-semibold leading-relaxed text-foreground">
                         {p.excerpt}
                     </p>
                     {p.body.split("\n\n").map((para, i) => (
                         <p
                             key={i}
-                            className="text-sm text-foreground/80 leading-relaxed"
+                            className="text-sm leading-relaxed text-foreground/80"
                         >
                             {para}
                         </p>
                     ))}
-                    <div className="border-t border-border pt-4">
-                        <p className="text-sm font-semibold text-foreground mb-2">
+                    <div className="pt-4 border-t border-border">
+                        <p className="mb-2 text-sm font-semibold text-foreground">
                             Cet article vous a plu ?
                         </p>
                         <SocialBar />
@@ -1581,7 +1581,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
     return (
         <div className="flex flex-col h-full overflow-hidden bg-background">
             {!d && (
-                <div className="bg-white border-b border-border px-4 py-3">
+                <div className="px-4 py-3 bg-white border-b border-border">
                     <h1
                         className="font-bold text-foreground"
                         style={{ fontFamily: DF, fontSize: "1.1rem" }}
@@ -1608,7 +1608,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                     >
                         <div
                             onClick={() => setActivePost(0)}
-                            className="rounded-2xl overflow-hidden shadow-md bg-card cursor-pointer hover:shadow-xl transition-all border border-border/50"
+                            className="overflow-hidden transition-all border shadow-md cursor-pointer rounded-2xl bg-card hover:shadow-xl border-border/50"
                         >
                             <div className="relative">
                                 <img
@@ -1635,7 +1635,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 >
                                     {posts[0].title}
                                 </h2>
-                                <p className="text-xs text-foreground/70 leading-relaxed mb-3">
+                                <p className="mb-3 text-xs leading-relaxed text-foreground/70">
                                     {posts[0].excerpt}
                                 </p>
                                 <div className="flex items-center justify-between mb-3">
@@ -1677,7 +1677,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         </span>
                                     </div>
                                     <p
-                                        className="font-semibold leading-snug text-foreground mb-1 line-clamp-2"
+                                        className="mb-1 font-semibold leading-snug text-foreground line-clamp-2"
                                         style={{
                                             fontFamily: DF,
                                             fontSize: d ? "0.95rem" : "0.85rem",
@@ -1697,7 +1697,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         {["f", "◎", "wa"].map(ic => (
                                             <button
                                                 key={ic}
-                                                className="w-6 h-6 border border-border rounded-md bg-muted text-xs font-bold text-foreground/50 flex items-center justify-center hover:bg-white transition-colors"
+                                                className="flex items-center justify-center w-6 h-6 text-xs font-bold transition-colors border rounded-md border-border bg-muted text-foreground/50 hover:bg-white"
                                             >
                                                 {ic}
                                             </button>
@@ -1711,10 +1711,10 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                     {/* Desktop sidebar */}
                     {d && (
                         <aside className="flex flex-col gap-4">
-                            <div className="bg-card rounded-2xl shadow-sm border border-border/50 overflow-hidden">
+                            <div className="overflow-hidden border shadow-sm bg-card rounded-2xl border-border/50">
                                 <div className="px-4 py-3 border-b border-border">
                                     <h3
-                                        className="font-bold text-sm text-foreground"
+                                        className="text-sm font-bold text-foreground"
                                         style={{ fontFamily: DF }}
                                     >
                                         Catégories
@@ -1730,7 +1730,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                     ].map(cat => (
                                         <button
                                             key={cat}
-                                            className="flex items-center justify-between text-sm px-2 py-2 rounded-xl hover:bg-muted transition-colors text-foreground/80"
+                                            className="flex items-center justify-between px-2 py-2 text-sm transition-colors rounded-xl hover:bg-muted text-foreground/80"
                                         >
                                             {cat}
                                             <ChevronRight
@@ -1742,7 +1742,7 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 </div>
                             </div>
                             <div
-                                className="rounded-2xl overflow-hidden shadow-sm border border-primary/20"
+                                className="overflow-hidden border shadow-sm rounded-2xl border-primary/20"
                                 style={{
                                     background:
                                         "linear-gradient(135deg,#FFF5F0,#FBF6EE)",
@@ -1751,25 +1751,25 @@ function BlogScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 <div className="p-4">
                                     <Newspaper
                                         size={24}
-                                        className="text-primary mb-2"
+                                        className="mb-2 text-primary"
                                     />
                                     <h3
-                                        className="font-bold text-sm text-foreground mb-1"
+                                        className="mb-1 text-sm font-bold text-foreground"
                                         style={{ fontFamily: DF }}
                                     >
                                         Newsletter
                                     </h3>
-                                    <p className="text-xs text-muted-foreground mb-3">
+                                    <p className="mb-3 text-xs text-muted-foreground">
                                         Recevez nos nouvelles recettes chaque
                                         semaine
                                     </p>
-                                    <div className="bg-white rounded-xl px-3 py-2 mb-2 border border-border">
+                                    <div className="px-3 py-2 mb-2 bg-white border rounded-xl border-border">
                                         <span className="text-xs text-muted-foreground">
                                             votre@email.com
                                         </span>
                                     </div>
                                     <button
-                                        className="w-full py-2 rounded-xl text-white text-xs font-bold bg-brand-orange"
+                                        className="w-full py-2 text-xs font-bold text-white rounded-xl bg-brand-orange"
                                     >
                                         S'abonner →
                                     </button>
@@ -1906,7 +1906,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
     }
 
     return (
-        <div className="flex flex-col h-full overflow-hidden bg-background relative">
+        <div className="relative flex flex-col h-full overflow-hidden bg-background">
             <div
                 className={`bg-white border-b border-border sticky top-0 z-10 ${d ? "px-6 pt-4 pb-0" : "px-4 pt-3 pb-0"}`}
             >
@@ -2023,14 +2023,14 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
                             }`}
                         >
                             {thread.pinned && (
-                                <div className="flex items-center gap-1 text-accent text-xs font-bold mb-2">
+                                <div className="flex items-center gap-1 mb-2 text-xs font-bold text-accent">
                                     <Pin size={10} className="fill-accent" />{" "}
                                     Épinglé
                                 </div>
                             )}
                             <div className="flex gap-3">
                                 <div
-                                    className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0 shadow-sm"
+                                    className="flex items-center justify-center w-10 h-10 text-sm font-bold text-white rounded-full shadow-sm shrink-0"
                                     style={{ background: thread.color }}
                                 >
                                     {thread.initials}
@@ -2045,7 +2045,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
                                     <p className="text-xs text-muted-foreground">
                                         {thread.author} · {thread.time}
                                     </p>
-                                    <p className="text-xs text-foreground/55 mt-1 line-clamp-1">
+                                    <p className="mt-1 text-xs text-foreground/55 line-clamp-1">
                                         {thread.preview}
                                     </p>
                                     <div className="flex gap-1.5 mt-2 flex-wrap">
@@ -2092,7 +2092,7 @@ function ForumScreen({ layout = "mobile" }: { layout?: Layout }) {
             {/* Floating "+" FAB — mobile only */}
             {!d && (
                 <button
-                    className="absolute bottom-4 right-4 z-20 w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl hover:shadow-2xl transition-all active:scale-95"
+                    className="absolute z-20 flex items-center justify-center text-white transition-all rounded-full shadow-xl bottom-4 right-4 w-14 h-14 hover:shadow-2xl active:scale-95"
                     style={{
                         background:
                             "linear-gradient(145deg,var(--color-brand-orange),#E07848)",
@@ -2129,7 +2129,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
     return (
         <div className="flex flex-col h-full overflow-y-auto scrollbar-hide bg-background">
             <div
-                className="text-white px-4 pt-4 pb-4 sticky top-0 z-10"
+                className="sticky top-0 z-10 px-4 pt-4 pb-4 text-white"
                 style={{
                     background: "linear-gradient(135deg,#2C1810,#4E5D6C)",
                 }}
@@ -2142,33 +2142,33 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                         >
                             Espace Ludique
                         </h1>
-                        <p className="text-white/60 text-xs">
+                        <p className="text-xs text-white/60">
                             Apprendre en jouant
                         </p>
                     </div>
                     <div className="relative">
                         <div
-                            className="w-14 h-14 rounded-full border-2 border-accent flex flex-col items-center justify-center"
+                            className="flex flex-col items-center justify-center border-2 rounded-full w-14 h-14 border-accent"
                             style={{ background: "rgba(255,255,255,0.1)" }}
                         >
-                            <span className="text-white font-bold text-sm leading-tight">
+                            <span className="text-sm font-bold leading-tight text-white">
                                 2 340
                             </span>
-                            <span className="text-accent text-xs font-mono">
+                            <span className="font-mono text-xs text-accent">
                                 pts
                             </span>
                         </div>
-                        <div className="absolute -top-1 -right-1 w-5 h-5 bg-accent rounded-full border-2 border-white flex items-center justify-center">
+                        <div className="absolute flex items-center justify-center w-5 h-5 border-2 border-white rounded-full -top-1 -right-1 bg-accent">
                             <Star size={9} className="text-white fill-white" />
                         </div>
                     </div>
                 </div>
                 <div className="mt-3">
-                    <div className="flex justify-between text-xs text-white/60 mb-1">
+                    <div className="flex justify-between mb-1 text-xs text-white/60">
                         <span>Niveau 7 — Chef de Partie</span>
                         <span>2340 / 3000</span>
                     </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-2 overflow-hidden rounded-full bg-white/10">
                         <div
                             className="h-full rounded-full"
                             style={{ width: "78%", background: "var(--color-brand-orange)" }}
@@ -2233,7 +2233,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                     ].map(({ icon, label, value }) => (
                         <div
                             key={label}
-                            className="bg-card rounded-2xl p-3 text-center shadow-sm border border-border/50"
+                            className="p-3 text-center border shadow-sm bg-card rounded-2xl border-border/50"
                         >
                             <div className="flex justify-center mb-1">
                                 {icon}
@@ -2254,9 +2254,9 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                             : "flex flex-col gap-4"
                     }
                 >
-                    <div className="bg-card rounded-2xl shadow-md border border-border/50 overflow-hidden">
+                    <div className="overflow-hidden border shadow-md bg-card rounded-2xl border-border/50">
                         <div
-                            className="px-4 py-3 flex items-center justify-between"
+                            className="flex items-center justify-between px-4 py-3"
                             style={{
                                 background:
                                     "linear-gradient(135deg,var(--color-brand-orange),#E07848)",
@@ -2264,7 +2264,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                         >
                             <div className="flex items-center gap-2">
                                 <BookMarked size={15} className="text-white" />
-                                <span className="text-white text-sm font-bold">
+                                <span className="text-sm font-bold text-white">
                                     Trivia Quotidien
                                 </span>
                             </div>
@@ -2273,11 +2273,11 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                             </span>
                         </div>
                         <div className="p-4">
-                            <p className="text-xs text-muted-foreground font-mono mb-2">
+                            <p className="mb-2 font-mono text-xs text-muted-foreground">
                                 QUESTION 3 / 10
                             </p>
                             <p
-                                className="text-sm font-semibold text-foreground mb-4 leading-snug"
+                                className="mb-4 text-sm font-semibold leading-snug text-foreground"
                                 style={{ fontFamily: DF }}
                             >
                                 Quel est l'ingrédient principal du "Riz Djon
@@ -2304,16 +2304,16 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 ))}
                             </div>
                             <button
-                                className="w-full py-3 rounded-xl text-white text-sm font-bold bg-brand-orange"
+                                className="w-full py-3 text-sm font-bold text-white rounded-xl bg-brand-orange"
                             >
                                 Valider la réponse →
                             </button>
                         </div>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <div className="bg-card rounded-2xl shadow-md border border-border/50 overflow-hidden">
+                        <div className="overflow-hidden border shadow-md bg-card rounded-2xl border-border/50">
                             <div
-                                className="px-4 py-3 flex items-center justify-between"
+                                className="flex items-center justify-between px-4 py-3"
                                 style={{
                                     background:
                                         "linear-gradient(135deg,#4E5D6C,#6B7D8E)",
@@ -2321,7 +2321,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                             >
                                 <div className="flex items-center gap-2">
                                     <ChefHat size={15} className="text-white" />
-                                    <span className="text-white text-sm font-bold">
+                                    <span className="text-sm font-bold text-white">
                                         Challenge Semaine
                                     </span>
                                 </div>
@@ -2334,17 +2334,17 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                     <img
                                         src={u(I.bouillon, 120, 120)}
                                         alt=""
-                                        className="w-16 h-16 rounded-xl object-cover bg-muted shrink-0"
+                                        className="object-cover w-16 h-16 rounded-xl bg-muted shrink-0"
                                     />
                                     <div>
                                         <p
-                                            className="text-sm font-semibold text-foreground leading-snug"
+                                            className="text-sm font-semibold leading-snug text-foreground"
                                             style={{ fontFamily: DF }}
                                         >
                                             Préparer un Bouillon National
                                             complet
                                         </p>
-                                        <p className="text-xs text-muted-foreground mt-1">
+                                        <p className="mt-1 text-xs text-muted-foreground">
                                             2h max · 847 participants
                                         </p>
                                     </div>
@@ -2359,7 +2359,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                                 className={`w-4 h-4 rounded-full flex items-center justify-center shrink-0 border-2 ${done ? "bg-primary border-primary" : "border-muted-foreground/30 bg-white"}`}
                                             >
                                                 {done && (
-                                                    <span className="text-white text-xs font-bold">
+                                                    <span className="text-xs font-bold text-white">
                                                         ✓
                                                     </span>
                                                 )}
@@ -2372,7 +2372,7 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         </div>
                                     ))}
                                 </div>
-                                <div className="h-2 bg-muted rounded-full overflow-hidden mb-3">
+                                <div className="h-2 mb-3 overflow-hidden rounded-full bg-muted">
                                     <div
                                         className="h-full rounded-full"
                                         style={{
@@ -2389,8 +2389,8 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 </button>
                             </div>
                         </div>
-                        <div className="bg-card rounded-2xl shadow-sm border border-border/50 overflow-hidden">
-                            <div className="px-4 py-3 border-b border-border flex items-center gap-2">
+                        <div className="overflow-hidden border shadow-sm bg-card rounded-2xl border-border/50">
+                            <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
                                 <TrendingUp size={15} className="text-accent" />
                                 <h3
                                     className="text-sm font-bold text-foreground"
@@ -2404,10 +2404,10 @@ function GamingScreen({ layout = "mobile" }: { layout?: Layout }) {
                                     key={String(name)}
                                     className={`flex items-center gap-3 px-4 py-2.5 border-b border-border/50 last:border-0 ${isUser ? "bg-primary/5" : ""}`}
                                 >
-                                    <span className="text-xs font-mono w-5 text-center text-muted-foreground shrink-0">
+                                    <span className="w-5 font-mono text-xs text-center text-muted-foreground shrink-0">
                                         {rank}
                                     </span>
-                                    <div className="w-7 h-7 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-foreground/60 shrink-0">
+                                    <div className="flex items-center justify-center text-xs font-bold rounded-full w-7 h-7 bg-muted text-foreground/60 shrink-0">
                                         {String(name)[0]}
                                     </div>
                                     <span
@@ -2556,7 +2556,7 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
     return (
         <div className="flex flex-col h-full overflow-hidden bg-background">
             <div
-                className="text-white px-4 pt-4 pb-4"
+                className="px-4 pt-4 pb-4 text-white"
                     style={{
                     background: "linear-gradient(135deg,#2C1810,var(--color-brand-orange))",
                 }}
@@ -2566,7 +2566,7 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                         <img
                             src={u(I.chefF, 120, 120)}
                             alt="avatar"
-                            className="w-14 h-14 rounded-full object-cover border-2 border-white/50 shadow-md bg-muted"
+                            className="object-cover border-2 rounded-full shadow-md w-14 h-14 border-white/50 bg-muted"
                         />
                         <button className="absolute -bottom-0.5 -right-0.5 w-5 h-5 bg-white rounded-full border border-primary/30 flex items-center justify-center shadow-sm">
                             <Camera size={9} className="text-primary" />
@@ -2574,12 +2574,12 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                     </div>
                     <div className="flex-1 min-w-0">
                         <h2
-                            className="font-bold text-white leading-tight"
+                            className="font-bold leading-tight text-white"
                             style={{ fontFamily: DF }}
                         >
                             Marie-Josée Dupont
                         </h2>
-                        <p className="text-white/60 text-xs">
+                        <p className="text-xs text-white/60">
                             @mariejosee_cuisine
                         </p>
                         <div className="flex gap-3 mt-1">
@@ -2628,7 +2628,7 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                     ))}
                 </div>
             </div>
-            <div className="bg-white border-b border-border flex shrink-0">
+            <div className="flex bg-white border-b border-border shrink-0">
                 {(["settings", "comments", "favorites"] as const).map(t => {
                     const labels = {
                         settings: "Paramètres",
@@ -2667,11 +2667,11 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                             <section key={group.label}>
                                 <div className="flex items-center gap-2 mb-2">
                                     {group.icon}
-                                    <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                                    <h3 className="text-xs font-bold tracking-wider uppercase text-muted-foreground">
                                         {group.label}
                                     </h3>
                                 </div>
-                                <div className="bg-card rounded-2xl shadow-sm border border-border/50 overflow-hidden">
+                                <div className="overflow-hidden border shadow-sm bg-card rounded-2xl border-border/50">
                                     {group.items.map((item, i) => (
                                         <div
                                             key={item.label}
@@ -2694,7 +2694,7 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                                                     />
                                                 </div>
                                             ) : (
-                                                <button className="text-xs font-semibold text-primary border border-primary/30 rounded-lg px-3 py-1 hover:bg-primary/5 transition-colors">
+                                                <button className="px-3 py-1 text-xs font-semibold transition-colors border rounded-lg text-primary border-primary/30 hover:bg-primary/5">
                                                     {"action" in item
                                                         ? item.action
                                                         : ""}
@@ -2711,15 +2711,15 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                                     size={13}
                                     className="text-destructive"
                                 />
-                                <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+                                <h3 className="text-xs font-bold tracking-wider uppercase text-muted-foreground">
                                     Zone Danger
                                 </h3>
                             </div>
-                            <div className="bg-red-50 rounded-2xl p-4 border border-red-100">
+                            <div className="p-4 border border-red-100 bg-red-50 rounded-2xl">
                                 <button className="w-full py-2.5 rounded-xl text-destructive text-sm font-bold border border-red-200 hover:bg-red-100 transition-colors">
                                     Supprimer mon compte
                                 </button>
-                                <p className="text-xs text-muted-foreground text-center mt-2">
+                                <p className="mt-2 text-xs text-center text-muted-foreground">
                                     Cette action est irréversible
                                 </p>
                             </div>
@@ -2740,18 +2740,18 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                             {comments.map((c, i) => (
                                 <div
                                     key={i}
-                                    className="bg-card rounded-2xl p-4 shadow-sm border border-border/50"
+                                    className="p-4 border shadow-sm bg-card rounded-2xl border-border/50"
                                 >
-                                    <div className="flex items-center gap-2 mb-2 pb-2 border-b border-border/50">
+                                    <div className="flex items-center gap-2 pb-2 mb-2 border-b border-border/50">
                                         <BookIcon
                                             size={12}
                                             className="text-primary shrink-0"
                                         />
-                                        <span className="text-xs font-semibold text-foreground truncate">
+                                        <span className="text-xs font-semibold truncate text-foreground">
                                             {c.recipe}
                                         </span>
                                     </div>
-                                    <p className="text-sm text-foreground/80 leading-relaxed">
+                                    <p className="text-sm leading-relaxed text-foreground/80">
                                         {c.text}
                                     </p>
                                     <div className="flex items-center justify-between mt-3">
@@ -2790,28 +2790,28 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                             {favorites.map((r, i) => (
                                 <div
                                     key={i}
-                                    className="flex gap-3 bg-card rounded-2xl p-3 shadow-sm border border-border/50 items-center"
+                                    className="flex items-center gap-3 p-3 border shadow-sm bg-card rounded-2xl border-border/50"
                                 >
                                     <img
                                         src={u(r.img, 140, 140)}
                                         alt={r.title}
-                                        className="w-16 h-16 rounded-xl object-cover bg-muted shrink-0"
+                                        className="object-cover w-16 h-16 rounded-xl bg-muted shrink-0"
                                     />
                                     <div className="flex-1 min-w-0">
                                         <p
-                                            className="text-sm font-semibold text-foreground leading-snug line-clamp-2"
+                                            className="text-sm font-semibold leading-snug text-foreground line-clamp-2"
                                             style={{ fontFamily: DF }}
                                         >
                                             {r.title}
                                         </p>
-                                        <div className="flex gap-2 mt-1 flex-wrap items-center">
-                                            <span className="text-xs text-muted-foreground flex items-center gap-1">
+                                        <div className="flex flex-wrap items-center gap-2 mt-1">
+                                            <span className="flex items-center gap-1 text-xs text-muted-foreground">
                                                 <Clock size={10} />
                                                 {r.time}
                                             </span>
                                             <DiffBadge diff={r.diff} />
                                         </div>
-                                        <p className="text-xs text-muted-foreground mt-1">
+                                        <p className="mt-1 text-xs text-muted-foreground">
                                             Sauvegardé le {r.savedOn}
                                         </p>
                                     </div>
@@ -2823,7 +2823,7 @@ function ProfileScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         <button>
                                             <X
                                                 size={12}
-                                                className="text-muted-foreground hover:text-destructive transition-colors"
+                                                className="transition-colors text-muted-foreground hover:text-destructive"
                                             />
                                         </button>
                                     </div>
@@ -2843,7 +2843,7 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
     return (
         <div className="flex flex-col h-full overflow-y-auto scrollbar-hide bg-background">
             {!d && (
-                <div className="bg-white border-b border-border px-4 py-3">
+                <div className="px-4 py-3 bg-white border-b border-border">
                     <h1
                         className="font-bold text-foreground"
                         style={{ fontFamily: DF, fontSize: "1.1rem" }}
@@ -2867,7 +2867,7 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                         {d && (
                             <div>
                                 <h2
-                                    className="font-bold text-foreground mb-1"
+                                    className="mb-1 font-bold text-foreground"
                                     style={{
                                         fontFamily: DF,
                                         fontSize: "1.3rem",
@@ -2899,7 +2899,7 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                                     {label}
                                 </label>
                                 <div className="bg-white border border-border rounded-xl px-3 py-2.5 flex items-center">
-                                    <span className="text-sm text-muted-foreground flex-1">
+                                    <span className="flex-1 text-sm text-muted-foreground">
                                         {placeholder}
                                     </span>
                                 </div>
@@ -2917,7 +2917,7 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                         </div>
                         <div className="flex items-start gap-2.5">
                             <div className="w-4 h-4 rounded-md border-2 border-primary/40 bg-white mt-0.5 shrink-0" />
-                            <span className="text-xs text-muted-foreground leading-relaxed">
+                            <span className="text-xs leading-relaxed text-muted-foreground">
                                 J'accepte que mes données soient traitées
                                 conformément à la politique de confidentialité.
                             </span>
@@ -2933,16 +2933,16 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                         </button>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <div className="bg-card rounded-2xl shadow-sm border border-border/50 overflow-hidden">
+                        <div className="overflow-hidden border shadow-sm bg-card rounded-2xl border-border/50">
                             <div className="px-4 py-3 border-b border-border">
                                 <h3
-                                    className="font-bold text-sm text-foreground"
+                                    className="text-sm font-bold text-foreground"
                                     style={{ fontFamily: DF }}
                                 >
                                     Informations de Contact
                                 </h3>
                             </div>
-                            <div className="p-4 flex flex-col gap-3">
+                            <div className="flex flex-col gap-3 p-4">
                                 {[
                                     {
                                         icon: (
@@ -2979,11 +2979,11 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         key={label}
                                         className="flex items-start gap-3"
                                     >
-                                        <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                                        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/10 shrink-0">
                                             {icon}
                                         </div>
                                         <div>
-                                            <p className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                                            <p className="text-xs font-bold tracking-wide uppercase text-muted-foreground">
                                                 {label}
                                             </p>
                                             <p className="text-sm text-foreground">
@@ -2994,16 +2994,16 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 ))}
                             </div>
                         </div>
-                        <div className="bg-card rounded-2xl shadow-sm border border-border/50 overflow-hidden">
+                        <div className="overflow-hidden border shadow-sm bg-card rounded-2xl border-border/50">
                             <div className="px-4 py-3 border-b border-border">
                                 <h3
-                                    className="font-bold text-sm text-foreground"
+                                    className="text-sm font-bold text-foreground"
                                     style={{ fontFamily: DF }}
                                 >
                                     Suivez-nous
                                 </h3>
                             </div>
-                            <div className="p-3 flex flex-col gap-2">
+                            <div className="flex flex-col gap-2 p-3">
                                 {[
                                     {
                                         mark: "f",
@@ -3029,10 +3029,10 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                                 ].map(({ mark, name, handle, subs, bg }) => (
                                     <a
                                         key={name}
-                                        className="flex items-center gap-3 p-3 rounded-xl border border-border/50 bg-muted/30 hover:bg-muted transition-all cursor-pointer group"
+                                        className="flex items-center gap-3 p-3 transition-all border cursor-pointer rounded-xl border-border/50 bg-muted/30 hover:bg-muted group"
                                     >
                                         <div
-                                            className="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-sm shrink-0"
+                                            className="flex items-center justify-center text-sm font-bold text-white shadow-sm w-9 h-9 rounded-xl shrink-0"
                                             style={{ background: bg }}
                                         >
                                             {mark}
@@ -3047,17 +3047,17 @@ function ContactScreen({ layout = "mobile" }: { layout?: Layout }) {
                                         </div>
                                         <ExternalLink
                                             size={13}
-                                            className="text-muted-foreground group-hover:text-primary transition-colors shrink-0"
+                                            className="transition-colors text-muted-foreground group-hover:text-primary shrink-0"
                                         />
                                     </a>
                                 ))}
                             </div>
                         </div>
-                        <div className="rounded-2xl overflow-hidden shadow-sm border border-border/50">
+                        <div className="overflow-hidden border shadow-sm rounded-2xl border-border/50">
                             <img
                                 src={u(I.market, 600, 200)}
                                 alt="Port-au-Prince"
-                                className="w-full h-28 object-cover bg-muted"
+                                className="object-cover w-full h-28 bg-muted"
                             />
                             <div className="bg-white px-4 py-2.5 flex items-center gap-2">
                                 <MapPin size={13} className="text-primary" />
@@ -3091,7 +3091,7 @@ function ChatbotPanel({ onClose }: { onClose: () => void }) {
     ]
     return (
         <div
-            className="absolute z-50 flex flex-col bg-white shadow-2xl overflow-hidden"
+            className="absolute z-50 flex flex-col overflow-hidden bg-white shadow-2xl"
                 style={{
                 bottom: 0,
                 left: 0,
@@ -3101,22 +3101,22 @@ function ChatbotPanel({ onClose }: { onClose: () => void }) {
             }}
         >
             <div
-                className="flex items-center justify-between px-4 py-3 shrink-0 border-b border-border"
+                className="flex items-center justify-between px-4 py-3 border-b shrink-0 border-border"
                 style={{
                     background: "linear-gradient(135deg,#2C1810,var(--color-brand-orange))",
                 }}
             >
                 <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
+                    <div className="flex items-center justify-center rounded-full w-7 h-7 bg-white/20">
                         <ChefHat size={14} className="text-white" />
                     </div>
                     <div>
-                        <p className="text-white text-xs font-bold">
+                        <p className="text-xs font-bold text-white">
                             Assistant Culinaire
                         </p>
                         <div className="flex items-center gap-1">
                             <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-                            <span className="text-white/60 text-xs">
+                            <span className="text-xs text-white/60">
                                 En ligne
                             </span>
                         </div>
@@ -3124,12 +3124,12 @@ function ChatbotPanel({ onClose }: { onClose: () => void }) {
                 </div>
                 <button
                     onClick={onClose}
-                    className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center"
+                    className="flex items-center justify-center rounded-full w-7 h-7 bg-white/10"
                 >
                     <X size={13} className="text-white" />
                 </button>
             </div>
-            <div className="flex-1 overflow-y-auto scrollbar-hide p-4 flex flex-col gap-3 bg-muted/30">
+            <div className="flex flex-col flex-1 gap-3 p-4 overflow-y-auto scrollbar-hide bg-muted/30">
                 {msgs.map((m, i) => (
                     <div
                         key={i}
@@ -3153,13 +3153,13 @@ function ChatbotPanel({ onClose }: { onClose: () => void }) {
                 ))}
             </div>
             <div className="border-t border-border px-3 py-2.5 flex gap-2 items-center shrink-0 bg-white">
-                <div className="flex-1 bg-muted rounded-xl px-3 py-2">
+                <div className="flex-1 px-3 py-2 bg-muted rounded-xl">
                     <span className="text-xs text-muted-foreground">
                         Posez votre question…
                     </span>
                 </div>
                 <button
-                    className="w-9 h-9 rounded-xl flex items-center justify-center shadow-sm bg-brand-orange"
+                    className="flex items-center justify-center shadow-sm w-9 h-9 rounded-xl bg-brand-orange"
                 >
                     <Send size={14} className="text-white" />
                 </button>
@@ -3231,7 +3231,7 @@ function MobileShell({
     const navigate = (s: string) => setActive(s as Screen)
     return (
         <div className="flex flex-col items-center">
-            <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-3">
+            <p className="mb-3 font-mono text-xs tracking-wider uppercase text-muted-foreground">
                 ← Mobile · 390px
             </p>
             <div
@@ -3246,7 +3246,7 @@ function MobileShell({
             >
                 {/* Notch */}
                 <div
-                    className="flex items-center justify-center relative shrink-0"
+                    className="relative flex items-center justify-center shrink-0"
                     style={{ height: 32, background: "#1A0F0A" }}
                 >
                     <div
@@ -3262,7 +3262,7 @@ function MobileShell({
                 </div>
                 {/* Screen */}
                 <div
-                    className="overflow-hidden relative"
+                    className="relative overflow-hidden"
                     style={{ height: 600 }}
                 >
                     <ScreenContent
@@ -3298,7 +3298,7 @@ function MobileShell({
                 </div>
                 {/* Bottom thumb nav */}
                 <div
-                    className="bg-white flex shrink-0"
+                    className="flex bg-white shrink-0"
                     style={{ height: 60, borderTop: "1px solid #E5D2BA" }}
                 >
                     {NAV_ITEMS.map(({ id, label, icon: Icon }) => {
@@ -3355,7 +3355,7 @@ function DesktopShell({
     const navigate = (s: string) => setActive(s as Screen)
     return (
         <div className="flex flex-col items-start">
-            <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-3">
+            <p className="mb-3 font-mono text-xs tracking-wider uppercase text-muted-foreground">
                 Desktop · 760px →
             </p>
             <div
@@ -3383,20 +3383,20 @@ function DesktopShell({
                             />
                         ))}
                     </div>
-                    <div className="flex-1 flex items-center gap-2 bg-white/80 rounded-lg px-3 py-1 mx-2 border border-border/50">
+                    <div className="flex items-center flex-1 gap-2 px-3 py-1 mx-2 border rounded-lg bg-white/80 border-border/50">
                         <div className="w-2.5 h-2.5 rounded-full border border-muted-foreground/40 shrink-0" />
-                        <span className="text-xs font-mono text-muted-foreground">
+                        <span className="font-mono text-xs text-muted-foreground">
                             cuisinehaïtiennevraie.ht
                         </span>
                     </div>
                 </div>
                 {/* Top nav header */}
                 <div
-                    className="shrink-0 flex items-center gap-3 px-5 border-b border-border bg-white"
+                    className="flex items-center gap-3 px-5 bg-white border-b shrink-0 border-border"
                     style={{ height: 56 }}
                 >
                     <Logo />
-                    <div className="w-px h-6 bg-border mx-1" />
+                    <div className="w-px h-6 mx-1 bg-border" />
                     <nav className="flex items-center gap-0.5 flex-1 overflow-x-auto scrollbar-hide">
                         {NAV_ITEMS.map(({ id, label, icon: Icon }) => {
                             const isActive =
@@ -3431,13 +3431,13 @@ function DesktopShell({
                         <img
                             src={u(I.chefF, 80, 80)}
                             alt="avatar"
-                            className="w-7 h-7 rounded-full object-cover border-2 border-primary/30 bg-muted"
+                            className="object-cover border-2 rounded-full w-7 h-7 border-primary/30 bg-muted"
                         />
                     </div>
                 </div>
                 {/* Content */}
                 <div
-                    className="overflow-hidden relative"
+                    className="relative overflow-hidden"
                     style={{ height: 595 }}
                 >
                     <div className="h-full overflow-y-auto scrollbar-hide bg-background">
@@ -3487,13 +3487,13 @@ export default function App() {
 
     return (
         <div
-            className="min-h-screen py-10 px-6"
+            className="min-h-screen px-6 py-10"
             style={{
                 background:
                     "linear-gradient(160deg,#F5EDE0 0%,#EEE0CF 50%,#E8D5BC 100%)",
             }}
         >
-            <div className="text-center mb-8">
+            <div className="mb-8 text-center">
                 <div className="flex justify-center mb-3">
                     <Logo />
                 </div>
@@ -3501,7 +3501,7 @@ export default function App() {
                     Interface Haute Fidélité · Mobile & Desktop
                 </p>
             </div>
-            <div className="flex flex-col xl:flex-row items-start justify-center gap-10">
+            <div className="flex flex-col items-start justify-center gap-10 xl:flex-row">
                 <MobileShell
                     active={active}
                     setActive={setActive}
@@ -3510,7 +3510,7 @@ export default function App() {
                 />
                 <DesktopShell active={active} setActive={setActive} />
             </div>
-            <div className="text-center mt-8">
+            <div className="mt-8 text-center">
                 <span className="text-xs font-semibold text-muted-foreground/70 border border-border/50 bg-white/60 px-4 py-1.5 rounded-full backdrop-blur-sm">
                     Écran actif :{" "}
                     <strong className="text-primary">{screenLabel}</strong>
