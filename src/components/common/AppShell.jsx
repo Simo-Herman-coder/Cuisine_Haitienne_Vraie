@@ -10,12 +10,12 @@ import {
 } from "lucide-react"
 
 const tabs = [
-    { id: "home", label: "Home", icon: Home },
-    { id: "recipes", label: "Recipes", icon: BookOpen },
-    { id: "videos", label: "Videos", icon: Play },
+    { id: "accueil", label: "Accueil", icon: Home },
+    { id: "recettes", label: "Recettes", icon: BookOpen },
+    { id: "vidéos", label: "Vidéos", icon: Play },
     { id: "blog", label: "Blog", icon: Newspaper },
-    { id: "games", label: "Games", icon: Gamepad2 },
-    { id: "profile", label: "Profile", icon: User },
+    { id: "jeux", label: "Jeux", icon: Gamepad2 },
+    { id: "profil", label: "Profil", icon: User },
 ]
 
 export default function AppShell({ children, activeTab = "home", onNavigate }) {
@@ -68,7 +68,7 @@ export default function AppShell({ children, activeTab = "home", onNavigate }) {
 
             <button
                 type="button"
-                aria-label="Open chatbot"
+                aria-label="Ouvrir le chatbot"
                 className="fixed bottom-20 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-amber-600 text-white shadow-lg transition hover:scale-105 hover:bg-amber-700 sm:right-6"
             >
                 <MessageCircle size={22} />

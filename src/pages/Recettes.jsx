@@ -1,10 +1,10 @@
 import React from "react"
 import AppShell from "../components/common/AppShell"
-import recipes from "../data/mockData.json"
+import recipes from "../data/mockData.js"
 
 export default function RecettesPage({ onNavigate }) {
     return (
-        <AppShell activeTab="recipes" onNavigate={onNavigate}>
+        <AppShell activeTab="recettes" onNavigate={onNavigate}>
             <section className="space-y-4">
                 <div className="rounded-3xl bg-white p-4 shadow-sm ring-1 ring-stone-200">
                     <h2 className="text-xl font-semibold text-stone-900">

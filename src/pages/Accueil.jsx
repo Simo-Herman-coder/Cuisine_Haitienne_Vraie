@@ -3,7 +3,7 @@ import AppShell from "../components/common/AppShell"
 
 export default function AccueilPage({ onNavigate }) {
     return (
-        <AppShell activeTab="home" onNavigate={onNavigate}>
+        <AppShell activeTab="accueil" onNavigate={onNavigate}>
             <section className="space-y-4 rounded-3xl bg-white p-4 shadow-sm ring-1 ring-stone-200">
                 <div className="rounded-2xl bg-amber-600 p-5 text-white">
                     <p className="text-sm font-semibold uppercase tracking-[0.2em] text-amber-100">
