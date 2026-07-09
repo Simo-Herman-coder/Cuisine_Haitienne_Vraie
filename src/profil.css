@@ -1,0 +1,369 @@
+ :root{
+  --bg: #efe7d8;
+  --card: #fffdf8;
+  --ink: #2b2a2e;
+  --ink-soft: #6f6a63;
+  --border: #e7ded0;
+  --accent: #c1552f;
+  --accent-soft: #f2c3a8;
+  --accent-tint: #fbeee6;
+  --danger: #c1552f;
+  --danger-bg: #fbeee6;
+  --danger-border: #f0cdb8;
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 9px;
+  --font-display: "Georgia", "Iowan Old Style", serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin:0;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a{ color: inherit; text-decoration: none; }
+
+/* =====================================================================
+   HEADER — one single sticky block containing: topbar, profile-card, tabs.
+   Because the whole thing is one sticky element pinned at top:0, the photo
+   and the Paramètres/Commentaires/Favoris bar never move on scroll, never
+   have a gap between them, and always span the full width — on every
+   breakpoint. Only the page content below (settings-columns) scrolls.
+===================================================================== */
+header.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--card);
+}
+
+/* ---------- Topbar (brand / nav / search) ---------- */
+.topbar{
+  border-bottom: 1px solid var(--border);
+  padding: 14px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 20px;
+}
+.brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.brand-mark{
+  width: 34px; height: 34px; border-radius: 9px;
+  background: linear-gradient(160deg, var(--accent), #a8431f);
+  display:flex; align-items:center; justify-content:center; color:#fff; font-size: 17px;
+}
+.brand-text{ line-height:1.05; }
+.brand-text .name{ font-family: var(--font-display); font-weight:700; font-size: 17px; color: var(--ink); }
+.brand-text .tag{ font-size: 10px; font-weight:700; letter-spacing: 0.08em; color: var(--accent); }
+
+nav.main-nav{
+  display:none;
+  align-items:center;
+  gap: 8px;
+  font-size: 14px;
+  color:#4a463f;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+nav.main-nav a{
+  display:flex;
+  align-items:center;
+  gap: 4px;
+  white-space:nowrap;
+  position: relative;
+  padding: 10px 16px 10px 20px;
+  border-radius: 999px;
+  transition: background-color .2s ease;
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+}
+nav.main-nav a:hover{ background: #f5e9d8; }
+nav.main-nav a::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 10px;
+}
+nav.main-nav a:nth-child(1)::before{ content: '🏠'; }
+nav.main-nav a:nth-child(2)::before{ content: '🍲'; }
+nav.main-nav a:nth-child(3)::before{ content: '🎥'; }
+nav.main-nav a:nth-child(4)::before{ content: '📝'; }
+nav.main-nav a:nth-child(5)::before{ content: '💬'; }
+nav.main-nav a:nth-child(6)::before{ content: '🎮'; }
+nav.main-nav a:nth-child(7)::before{ content: '👤'; }
+nav.main-nav a:nth-child(8)::before{ content: '✉️'; }
+nav.main-nav a svg{ opacity:0.7; }
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap: 14px;
+  flex-shrink:0;
+  margin-left: auto;
+}
+.search-box{
+  display:flex; align-items:center; gap:8px; background: var(--bg);
+  border-radius: 999px; padding: 9px 16px; font-size: 13px; color: var(--ink-soft); min-width: 160px;
+}
+.avatar-sm{ width:34px; height:34px; border-radius:50%; background: linear-gradient(160deg,#e7b596,#c1552f); flex-shrink:0; }
+
+@media (min-width: 760px){
+  nav.main-nav{ display:flex; gap: 12px; }
+}
+@media (min-width: 1200px){
+  .topbar{ justify-content:flex-start; }
+  .brand{ order: 0; margin-right: auto; }
+  nav.main-nav{ display:flex; order: 1; overflow: visible; flex: 0 0 auto; margin-left: 8px; scroll-snap-type: none; }
+  nav.main-nav a{ flex: 0 0 auto; }
+  .header-right{ display:flex; order: 2; }
+}
+
+@media (max-width: 759px){
+  /* On mobile the topbar (brand/nav/search) is hidden entirely — the
+     profile card itself acts as the page header. */
+  .topbar{ display: none; }
+}
+
+/* ---------- Profile card (photo + name + stats) ---------- */
+.profile-card{
+  background: linear-gradient(160deg, #4a3a30, #2f241d);
+  padding: 20px 28px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+.profile-card::before{
+  content:"";
+  position:absolute; inset:0;
+  background: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&q=60') center/cover;
+  opacity: 0.35;
+  z-index:0;
+}
+.profile-top{
+  position:relative; z-index:1;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap: 12px;
+}
+.profile-id{ display:flex; align-items:center; gap: 14px; }
+.profile-avatar{
+  width: 56px; height:56px; border-radius:50%;
+  background: #6b5344 url('https://images.unsplash.com/photo-1607013251379-e6eecfffe234?w=200&q=60') center/cover;
+  border: 2px solid rgba(255,255,255,0.5);
+  flex-shrink:0;
+}
+.profile-name{ font-family: var(--font-display); font-size: 19px; font-weight:700; line-height:1.2; }
+.profile-handle{ font-size: 12.5px; color: rgba(255,255,255,0.75); margin-top:2px; }
+
+.profile-actions{ display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+.pill-btn{
+  display:flex; align-items:center; gap:6px;
+  padding: 7px 14px;
+  border-radius:999px;
+  font-size: 12.5px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.08);
+  color:#fff;
+}
+.pill-btn.solid{ background: var(--accent); border-color: var(--accent); }
+
+.stats-row{
+  position:relative; z-index:1;
+  display:flex;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+}
+.stat{ flex:1; text-align:center; padding: 0 6px; }
+.stat + .stat{ border-left: 1px solid rgba(255,255,255,0.18); }
+.stat .num{ font-family: var(--font-display); font-size: 17px; font-weight:700; }
+.stat .lbl{ font-size: 10.5px; color: rgba(255,255,255,0.7); margin-top:2px; }
+.stat.desktop-only{ display:none; }
+@media (min-width: 760px){
+  .stat.desktop-only{ display:block; }
+}
+
+@media (max-width: 759px){
+  .profile-card{ padding: 22px 16px; }
+}
+
+/* ---------- Tabs (glued directly under the profile card, zero gap) ---------- */
+.tabs{
+  display:flex;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  overflow:hidden;
+}
+.tab{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding: 14px 8px;
+  font-size: 13px;
+  font-weight:600;
+  color: var(--ink-soft);
+  border-bottom: 2px solid transparent;
+  cursor:pointer;
+}
+.tab.active{ color: var(--accent); border-bottom-color: var(--accent); }
+
+/* =====================================================================
+   MAIN CONTENT — the only part of the page that actually scrolls.
+===================================================================== */
+main{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 20px 90px;
+}
+@media (min-width: 760px){
+  main{ padding: 28px 32px 60px; }
+}
+
+.settings-columns{
+  display:flex;
+  flex-direction:column;
+  gap: 20px;
+}
+@media (min-width: 760px){
+  .settings-columns{ flex-direction: row; align-items:flex-start; gap: 24px; }
+  .col{ flex:1; display:flex; flex-direction:column; gap:20px; min-width:0; }
+}
+
+@media (max-width: 759px){
+  /* Flatten the two desktop columns into a single flex column on mobile,
+     then reorder the sections with `order` so they always read:
+     Compte, Notifications, Confidentialité, Langue & Région, Zone Danger. */
+  .col{ display:contents; }
+  .section-block{ order: 99; }
+  .sec-compte{ order: 1; }
+  .sec-notifications{ order: 2; }
+  .sec-confidentialite{ order: 3; }
+  .sec-langue{ order: 4; }
+  .sec-danger{ order: 5; }
+}
+
+/* Wrapper for each settings block: holds the label (outside, no background)
+   and the white card (rows) below it. */
+.section-block{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+/* Label sits OUTSIDE the white card — no background, just plain text above it */
+.section-title{
+  display:flex; align-items:center; gap:8px;
+  font-size: 12px; font-weight:700; letter-spacing:.05em;
+  color: var(--ink-soft); text-transform:uppercase;
+  padding: 0 4px;
+}
+.section-title svg{ color: var(--accent); }
+
+.section-card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 6px 18px;
+}
+
+.setting-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
+.setting-row:first-of-type{ border-top:none; }
+.setting-row .label{ font-size: 14px; font-weight:700; }
+.setting-row .value{ font-size: 12.5px; color: var(--ink-soft); margin-top:2px; }
+
+.btn-outline{
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: #fff;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+
+.switch{
+  width: 42px; height:24px;
+  border-radius: 999px;
+  background: #ddd4c4;
+  position:relative;
+  flex-shrink:0;
+  cursor:pointer;
+  transition: background .15s ease;
+}
+.switch::after{
+  content:"";
+  position:absolute;
+  top:2px; left:2px;
+  width:20px; height:20px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  transition: transform .15s ease;
+}
+.switch.on{ background: var(--accent); }
+.switch.on::after{ transform: translateX(18px); }
+
+.danger-card{
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-border);
+  border-radius: var(--radius-md);
+  margin: 4px 0 16px;
+  padding: 16px;
+  text-align:center;
+}
+.danger-btn{
+  width:100%;
+  background: #fff;
+  border: 1.5px solid var(--danger);
+  color: var(--danger);
+  font-weight:700;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 999px;
+  cursor:pointer;
+}
+.danger-note{ font-size: 12px; color: var(--ink-soft); margin-top:8px; }
+
+/* ---------- Floating chat button ---------- */
+.fab-chat{
+  position: fixed; right: 20px; bottom: 28px;
+  width: 52px; height:52px; border-radius:50%;
+  background: var(--card);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--accent);
+  z-index: 25;
+}

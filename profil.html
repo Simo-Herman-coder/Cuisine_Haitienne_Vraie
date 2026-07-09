@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Profil — Cuisine Haïtienne Vraie</title>
+    <link rel="stylesheet" href="src/profil.css">
+</head>
+<body>
+
+<header class="site-header">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2c-3 4-6 7-6 11a6 6 0 0012 0c0-4-3-7-6-11z" fill="currentColor"/></svg>
+      </div>
+      <div class="brand-text">
+        <div class="name">Cuisine Haïtienne</div>
+        <div class="tag">VRAIE</div>
+      </div>
+    </div>
+    <nav class="main-nav">
+      <a href="#">Accueil</a>
+      <a href="#">Recettes</a>
+      <a href="#">Vidéos</a>
+      <a href="#">Blog</a>
+      <a href="#">Forum</a>
+      <a href="#">Jeux</a>
+      <a href="#">Profil</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="header-right">
+      <div class="search-box">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        Rechercher…
+      </div>
+      <div class="avatar-sm"></div>
+    </div>
+  </div>
+
+  <!-- Single profile card: always full-bleed, glued directly under the topbar
+       (or acting as the topbar itself on mobile), never leaving a gap. -->
+  <div class="profile-card">
+    <div class="profile-top">
+      <div class="profile-id">
+        <div class="profile-avatar"></div>
+        <div>
+          <div class="profile-name">Marie-Josée Dupont</div>
+          <div class="profile-handle">@mariejosee_cuisine &nbsp;·&nbsp; 47 recettes &nbsp;·&nbsp; 312 abonnés</div>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <div class="pill-btn solid">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Éditer
+        </div>
+        <div class="pill-btn">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+          Sortir
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="num">2 340 pts</div>
+        <div class="lbl">Score</div>
+      </div>
+      <div class="stat">
+        <div class="num">Chef · 7</div>
+        <div class="lbl">Niveau</div>
+      </div>
+      <div class="stat">
+        <div class="num">4</div>
+        <div class="lbl">Favoris</div>
+      </div>
+      <div class="stat desktop-only">
+        <div class="num">12</div>
+        <div class="lbl">Commentaires</div>
+      </div>
+      <div class="stat desktop-only">
+        <div class="num">7j 🔥</div>
+        <div class="lbl">Streak</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Single tabs bar: glued directly under the profile card, zero gap,
+       full width, part of the same sticky header so it never scrolls away. -->
+  <div class="tabs">
+    <div class="tab active">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.9-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-1-1.6 1.7 1.7 0 00-1.9.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.9 1.7 1.7 0 00-1.5-1H3a2 2 0 010-4h.1a1.7 1.7 0 001.5-1 1.7 1.7 0 00-.3-1.9l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.9.3H9a1.7 1.7 0 001-1.5V3a2 2 0 014 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.9-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.9V9a1.7 1.7 0 001.5 1H21a2 2 0 010 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>
+      Paramètres
+    </div>
+    <div class="tab">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H4l1.4-4.2A8.5 8.5 0 1121 11.5z"/></svg>
+      Commentaires
+    </div>
+    <div class="tab">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 000-7.8z"/></svg>
+      Favoris
+    </div>
+  </div>
+
+</header>
+
+<main>
+
+  <div class="settings-columns">
+    <div class="col">
+
+      <div class="section-block sec-compte">
+        <div class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+          Compte
+        </div>
+
+        <div class="section-card">
+        <div class="setting-row">
+          <div>
+            <div class="label">Nom d'affichage</div>
+            <div class="value">Marie-Josée D.</div>
+          </div>
+          <button class="btn-outline">Modifier</button>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <div class="label">Adresse e-mail</div>
+            <div class="value">mjd@example.com</div>
+          </div>
+          <button class="btn-outline">Modifier</button>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <div class="label">Mot de passe</div>
+            <div class="value">••••••••</div>
+          </div>
+          <button class="btn-outline">Changer</button>
+        </div>
+        </div>
+      </div>
+
+      <div class="section-block sec-confidentialite">
+        <div class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Confidentialité
+        </div>
+
+        <div class="section-card">
+        <div class="setting-row">
+          <div>
+            <div class="label">Profil public</div>
+            <div class="value">Oui</div>
+          </div>
+          <div class="switch on"></div>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <div class="label">Historique visible</div>
+            <div class="value">Non</div>
+          </div>
+          <div class="switch"></div>
+        </div>
+        </div>
+      </div>
+
+      <div class="section-block sec-danger">
+        <div class="section-title" style="color:var(--danger);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+          Zone Danger
+        </div>
+        <div class="section-card">
+        <div class="danger-card">
+          <button class="danger-btn">Supprimer mon compte</button>
+          <div class="danger-note">Cette action est irréversible</div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col">
+
+      <div class="section-block sec-notifications">
+        <div class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+          Notifications
+        </div>
+
+        <div class="section-card">
+        <div class="setting-row">
+          <div>
+            <div class="label">Nouvelles recettes</div>
+            <div class="value">Activé</div>
+          </div>
+          <div class="switch on"></div>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <div class="label">Réponses commentaires</div>
+            <div class="value">Activé</div>
+          </div>
+          <div class="switch on"></div>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <div class="label">Défis hebdomadaires</div>
+            <div class="value">Désactivé</div>
+          </div>
+          <div class="switch"></div>
+        </div>
+        </div>
+      </div>
+
+      <div class="section-block sec-langue">
+        <div class="section-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 010 20 15 15 0 010-20z"/></svg>
+          Langue &amp; Région
+        </div>
+
+        <div class="section-card">
+        <div class="setting-row">
+          <div>
+            <div class="label">Langue</div>
+            <div class="value">Français</div>
+          </div>
+          <button class="btn-outline">Changer</button>
+        </div>
+
+        <div class="setting-row">
+          <div>
+            <div class="label">Pays</div>
+            <div class="value">Haïti</div>
+          </div>
+          <button class="btn-outline">Changer</button>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<div class="fab-chat">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-8.5 8.5H4l1.4-4.2A8.5 8.5 0 1121 11.5z"/></svg>
+</div>
+
+<!-- mobile navigation removed for profile page -->
+
+<script>
+  document.querySelectorAll('.switch').forEach(s=>{
+    s.addEventListener('click', ()=> s.classList.toggle('on'));
+  });
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
