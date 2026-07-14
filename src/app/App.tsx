@@ -1,4 +1,5 @@
 import { useRef, useState } from "react"
+import { useRecettes } from "../hooks/useRecettes"
 import {
     Bell,
     BookOpen,
@@ -51,7 +52,7 @@ type ModuleId =
     | "contact"
 
 type Recipe = {
-    id: number
+    id: number | string
     titre: string
     categorie: string
     temps: string
@@ -615,9 +616,13 @@ function SectionTitle({ titre }: { titre: string }) {
 function SearchBar({
     compact = false,
     placeholder,
+    value,
+    onChange,
 }: {
     compact?: boolean
     placeholder?: string
+    value?: string
+    onChange?: (value: string) => void
 }) {
     return (
         <label
@@ -628,6 +633,8 @@ function SearchBar({
         >
             <Search size={compact ? 16 : 22} className="shrink-0 text-[#876658]" />
             <input
+                value={value}
+                onChange={event => onChange?.(event.target.value)}
                 className="min-w-0 flex-1 bg-transparent text-sm text-[var(--foreground)] outline-none placeholder:text-[#8d6b5e] md:text-base"
                 placeholder={
                     placeholder ?? (compact ? "Rechercher..." : "Chercher une recette...")
